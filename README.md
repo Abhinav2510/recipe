@@ -75,6 +75,8 @@ Now application is up and running on http://localhost:8080
 ####Running application
 - Run application using `mvn spring-boot: run` or `java -jar /target/recipe-0.0.1-SNAPSHOT.jar`
 - Navigate to http://localhost:8080
+- ![Screenshot 2021-09-23 at 00 33 45](https://user-images.githubusercontent.com/14979620/134431549-93e3718e-85c5-4f24-970c-2f4998d0c337.png)
+
 
 #### Authenticating for using Recipe API
 - under `user-controller` tab you can create user or use already created user to authenticate 
@@ -87,7 +89,10 @@ Now application is up and running on http://localhost:8080
   } 
 ```
 - It will return response header `authorization` with JWT token
+- ![Screenshot 2021-09-23 at 00 35 49](https://user-images.githubusercontent.com/14979620/134431617-56e89f8d-5c41-4daf-bf00-cae108677c86.png)
 - Copy the value in `authorization` header
 - On top left corner click on Authorize button and enter copied value
+- ![Screenshot 2021-09-23 at 00 37 57](https://user-images.githubusercontent.com/14979620/134431583-a86083de-afed-4d23-b2b9-ff5440c51a30.png)
+
 
 Now you should be able to call all the APIs without needing to specify `authorization` header manually 
