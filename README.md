@@ -9,8 +9,8 @@ The Recipe API Backend allows performing following operation
 - Retrieve recipe with detailed instruction
 - Create User 
 - Login with user details
-- 
-##Code coverage
+
+## Code coverage
 ![Screenshot 2021-09-23 at 09 18 24](https://user-images.githubusercontent.com/14979620/134470003-aee1b61a-8860-43e4-b1bf-8108693e60a3.png)
 
 ## Assumptions :
