@@ -47,7 +47,7 @@ The Recipe API Backend allows performing following operation. Equipped with stat
 
 ## :memo: Steps to run the application
 - Checkout the code / Download from git repo()
-- checkout : open git bash and run command `git clone`
+- checkout : open git bash and run command `git clone https://github.com/Abhinav2510/recipe.git`
 - Option 1: Maven way of running
   - open command prompt(cmd) or terminal on Mac
   - navigate to the project folder
