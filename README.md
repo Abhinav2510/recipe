@@ -31,13 +31,16 @@ The Recipe API Backend allows performing following operation
 - Maven
 - Git bash
 
-- ## Steps to run the application
+## Steps to run the application
 - Checkout the code / Download from git repo()
-- checkout : open git bash and run command `git clone `
-- open command prompt(cmd) or terminal on Mac
-- navigate to the project folder
-- run command `mvn clean install`
-- once its successfully build run command `mvn spring-boot: run`
+- checkout : open git bash and run command `git clone`
+- Option 1: Maven way of running
+  - open command prompt(cmd) or terminal on Mac
+  - navigate to the project folder
+  - run command `mvn clean install`
+  - once its successfully build run command `mvn spring-boot: run`
+- Option 2: Docker way of running
+  - Open terminal and run `docker-build-run.sh`
 
 Now application is up and running on http://localhost:8080
 
