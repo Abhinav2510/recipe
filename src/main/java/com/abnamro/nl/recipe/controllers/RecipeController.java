@@ -9,7 +9,6 @@ import com.abnamro.nl.recipe.logic.RecipeService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -49,13 +48,11 @@ public class RecipeController {
 
     @GetMapping("{recipeId}")
     @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
     public RecipeGetDTO getRecipe(@PathVariable("recipeId") long recipeId) {
         return modelMapper.map(recipeService.getRecipe(recipeId), RecipeGetDTO.class);
     }
 
     @PutMapping("{recipeId}")
-    @ResponseBody
     public RecipeGetDTO updateRecipe(@PathVariable long recipeId, @RequestBody @Valid RecipeUpdateDTO recipeUpdateDTO, Principal principal) {
         Recipe recipeToUpdate = modelMapper.map(recipeUpdateDTO, Recipe.class);
         recipeToUpdate.setRecipeId(recipeId);

@@ -9,6 +9,9 @@ import com.abnamro.nl.recipe.repos.UserRepository;
 import com.abnamro.nl.recipe.utils.RecipeAppConstants;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -31,7 +34,7 @@ public class RecipeService {
     private InstructionsRepository instructionsRepository;
     private IngredientsRepo ingredientsRepo;
 
-
+    @CachePut(value = "recipe-cache", key = "#recipe.recipeId")
     public Recipe createRecipe(@Valid Recipe recipe, @NotNull String userName) {
         User user = userRepository.findById(userName)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, RecipeAppConstants.USER_NOT_FOUND));
@@ -41,6 +44,7 @@ public class RecipeService {
         return recipeRepository.save(recipe);
     }
 
+    @Cacheable(value = "recipe-cache", key = "#recipeId")
     public Recipe getRecipe(long recipeId) {
         return recipeRepository.findById(recipeId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, RecipeAppConstants.RECIPE_NOT_FOUND));
     }
@@ -50,6 +54,7 @@ public class RecipeService {
         return recipeRepository.findAll(pageable).getContent();
     }
 
+    @CacheEvict(value = "recipe-cache", key = "#recipeId")
     public void deleteRecipe(long recipeId, @NotNull String userName) {
         User retrievedUser = userRepository.findById(userName).orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, RecipeAppConstants.USER_NOT_FOUND));
         Recipe recipe = recipeRepository.findById(recipeId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, RecipeAppConstants.RECIPE_NOT_FOUND));
@@ -62,6 +67,7 @@ public class RecipeService {
     }
 
     @Transactional
+    @CachePut(value = "recipe-cache", key = "#recipeNew.recipeId")
     public Recipe updateRecipe(@Valid Recipe recipeNew, @NotNull String userName) {
 
         User user = userRepository.findById(userName).orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, RecipeAppConstants.USER_NOT_FOUND));
