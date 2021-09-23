@@ -1,8 +1,6 @@
 package com.abnamro.nl.recipe.security;
 
 import com.abnamro.nl.recipe.utils.AuthUtils;
-import io.jsonwebtoken.Jwts;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -2,7 +2,6 @@ package com.abnamro.nl.recipe.repos;
 
 import com.abnamro.nl.recipe.entities.Instruction;
 import com.abnamro.nl.recipe.entities.Recipe;
-import com.abnamro.nl.recipe.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

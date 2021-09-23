@@ -6,9 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -52,11 +49,8 @@ public class RecipeGetDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class IngredientsDTO {
-        @NotEmpty
         private String name;
-        @NotEmpty
         private String unit;
-        @Positive
         private double quantity;
     }
 

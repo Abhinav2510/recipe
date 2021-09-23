@@ -155,7 +155,8 @@ public class RecipeServiceTest {
     public void test_UpdateRecipe_UserExist_RecipeDoesNotExist() {
         Mockito.when(userRepository.findById(Mockito.anyString())).thenReturn(Optional.of(mockUser));
         Mockito.when(recipeRepository.findById(Mockito.anyLong())).thenReturn(Optional.empty());
-        ResponseStatusException responseStatusException = assertThrows(ResponseStatusException.class, () -> {
+        ResponseStatusException responseStatusException;
+        responseStatusException = assertThrows(ResponseStatusException.class, () -> {
             recipeService.updateRecipe(mockRecipe, mockUser.getUserName());
         });
         assertEquals(HttpStatus.NOT_FOUND, responseStatusException.getStatus());

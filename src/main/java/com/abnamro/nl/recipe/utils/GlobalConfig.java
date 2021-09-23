@@ -3,8 +3,6 @@ package com.abnamro.nl.recipe.utils;
 import com.abnamro.nl.recipe.dto.RecipeGetDTO;
 import com.abnamro.nl.recipe.dto.RecipeListDTO;
 import com.abnamro.nl.recipe.entities.Recipe;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.springframework.context.annotation.Bean;
