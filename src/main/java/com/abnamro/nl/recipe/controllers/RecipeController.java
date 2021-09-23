@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Controller
 @RestController
 @RequestMapping(path = "/recipe")
 @AllArgsConstructor
@@ -41,7 +40,6 @@ public class RecipeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
     public RecipeGetDTO createRecipe(@Valid @RequestBody RecipeCreateDTO recipeToCreate, Principal principal) {
         Recipe recipe = modelMapper.map(recipeToCreate, Recipe.class);
         recipe.setCreatedOn(LocalDateTime.now().withNano(0));
