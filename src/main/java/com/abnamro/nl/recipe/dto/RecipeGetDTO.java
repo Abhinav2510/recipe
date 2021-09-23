@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * RecipeGetDTO
+ * DTO for Recipe Get provides detailed recipe details
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

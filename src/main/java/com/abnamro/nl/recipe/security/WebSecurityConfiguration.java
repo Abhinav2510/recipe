@@ -16,6 +16,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+/**
+ * WebSecurityConfiguration
+ * Extends WebSecurityConfigurerAdapter and sets CORS policy custom UserDetailService
+ */
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -40,6 +44,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/users/signin"
     };
 
+    /**
+     *
+     * @param http Spring HttpSecurity
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
@@ -53,12 +62,21 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
     }
 
+    /**
+     * Sets custom user details service in AuthenticationManagerBuilder
+     * @param auth Spring security AuthenticationManagerBuilder
+     * @throws Exception
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
 
     }
 
+    /**
+     * CORS config
+     * @return corsConfigurationSource
+     */
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -69,6 +87,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return source;
     }
 
+    /**
+     * Creates authenticationManager Bean
+     * @return AuthenticationManager
+     * @throws Exception
+     */
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {

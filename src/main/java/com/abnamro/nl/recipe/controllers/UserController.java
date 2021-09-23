@@ -14,11 +14,20 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(path = "users")
 @AllArgsConstructor
+/**
+ * UserController
+ * It allows user to be created and authenticated
+ */
 public class UserController {
 
     private ModelMapper modelMapper;
     private UserService userService;
 
+    /**
+     * User creation
+     *
+     * @param userDTO user details to create
+     */
     @PostMapping("signup")
     @ResponseStatus(HttpStatus.CREATED)
     public void signUp(@RequestBody @Valid UserCreateDTO userDTO) {
@@ -26,6 +35,12 @@ public class UserController {
         userService.createUser(user);
     }
 
+    /**
+     * Authenticates user
+     *
+     * @param userCreateDTO user details to authenticate
+     * @param httpResponse  on successful authentication header 'authorization' with bearer token which can be later used in all requests for auth
+     */
     @PostMapping("/signin")
     @ResponseStatus(HttpStatus.OK)
     public void signIn(@RequestBody @Valid UserCreateDTO userCreateDTO, HttpServletResponse httpResponse) {

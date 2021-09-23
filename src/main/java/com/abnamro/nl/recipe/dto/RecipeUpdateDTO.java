@@ -12,6 +12,11 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
+/**
+ * RecipeUpdateDTO
+ * DTO for recipe update request
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

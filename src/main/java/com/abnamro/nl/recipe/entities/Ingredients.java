@@ -9,6 +9,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 
+/**
+ * Ingredients
+ */
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor

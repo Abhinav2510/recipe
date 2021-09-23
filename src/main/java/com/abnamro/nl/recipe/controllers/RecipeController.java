@@ -20,6 +20,10 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(path = "/recipe")
 @AllArgsConstructor
+/**
+ * RecipeController
+ * Acts as a REST Controller
+ */
 public class RecipeController {
 
 
@@ -27,6 +31,12 @@ public class RecipeController {
     private RecipeService recipeService;
 
 
+    /**
+     * Gets list of all Recipes
+     * @param size defaults to 10
+     * @param page defaults to 0
+     * @return List of all recipes in page
+     */
     @GetMapping
     public List<RecipeListDTO> getRecipes(
             @RequestParam(name = "size", defaultValue = "10") int size,
@@ -37,6 +47,12 @@ public class RecipeController {
                 collect(Collectors.toList());
     }
 
+    /**
+     * Create recipe and returns created recipe
+     * @param recipeToCreate recipe details for creation
+     * @param principal spring security authenticated user
+     * @return created recipe
+     */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public RecipeGetDTO createRecipe(@Valid @RequestBody RecipeCreateDTO recipeToCreate, Principal principal) {
@@ -46,12 +62,24 @@ public class RecipeController {
 
     }
 
+    /**
+     * Gets detail of recipe with instructions and ingredients
+     * @param recipeId recipeId to get detailed recipe
+     * @return detailed recipe with instructions and ingredients
+     */
     @GetMapping("{recipeId}")
     @ResponseStatus(HttpStatus.OK)
     public RecipeGetDTO getRecipe(@PathVariable("recipeId") long recipeId) {
         return modelMapper.map(recipeService.getRecipe(recipeId), RecipeGetDTO.class);
     }
 
+    /**
+     *  Updates recipe with provided details only if the requester is also creator of recipe
+     * @param recipeId recipeId to update  recipe
+     * @param recipeUpdateDTO recipe details to update  recipe
+     * @param principal spring security authenticated user
+     * @return
+     */
     @PutMapping("{recipeId}")
     public RecipeGetDTO updateRecipe(@PathVariable long recipeId, @RequestBody @Valid RecipeUpdateDTO recipeUpdateDTO, Principal principal) {
         Recipe recipeToUpdate = modelMapper.map(recipeUpdateDTO, Recipe.class);
@@ -59,6 +87,11 @@ public class RecipeController {
         return modelMapper.map(recipeService.updateRecipe(recipeToUpdate, principal.getName()), RecipeGetDTO.class);
     }
 
+    /**
+     * Deletes recipe only if the requester is also creator of recipe
+     * @param recipeId
+     * @param principal
+     */
     @DeleteMapping("{recipeId}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteRecipe(@PathVariable("recipeId") long recipeId, Principal principal) {

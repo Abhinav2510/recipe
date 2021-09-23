@@ -10,12 +10,22 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 
+/**
+ * UserDetailServiceImpl
+ * Overrides loadUserByUsername to use custom user entity
+ */
 @Component
 public class UserDetailServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     *
+     * @param userName name of user to authenticate
+     * @return UserDetails containing  User object with principal details
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userRepository.findById(userName).orElse(null);

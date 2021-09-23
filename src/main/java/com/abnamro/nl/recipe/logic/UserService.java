@@ -20,6 +20,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 
+/**
+ * UserService
+ * Service containing user related business logic
+ */
 @Slf4j
 @Component
 public class UserService {

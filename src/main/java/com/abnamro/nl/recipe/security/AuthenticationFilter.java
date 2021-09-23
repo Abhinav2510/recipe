@@ -22,17 +22,35 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 
+/**
+ * AuthenticationFilter
+ * Extend UsernamePasswordAuthenticationFilter and
+ * overrides attemptAuthentication to use custom UserCreateDTO in request
+ * overrides successfulAuthentication to generate custom header in response 'Authorization' containing JWT for further requests
+ */
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private String authenticationSigningSecret;
     private AuthenticationManager authenticationManager;
 
-    public AuthenticationFilter(AuthenticationManager authenticationManager,String authenticationSigningSecret) {
+    /**
+     * public constructor
+     * @param authenticationManager Spring authentication manager
+     * @param authenticationSigningSecret Secret used for JWT signing
+     */
+    public AuthenticationFilter(AuthenticationManager authenticationManager, String authenticationSigningSecret) {
         this.authenticationManager = authenticationManager;
         this.authenticationSigningSecret = authenticationSigningSecret;
         setFilterProcessesUrl("/login");
     }
 
+    /**
+     * Adds custom header on successful authentication
+     * @param request http request
+     * @param response http response
+     * @return
+     * @throws AuthenticationException
+     */
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
@@ -45,10 +63,19 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     }
 
 
+    /**
+     * Adds custom header on successful authentication
+     * @param request http request
+     * @param response http response
+     * @param chain filter chains
+     * @param authResult auth result
+     * @throws IOException may throw while trying to serialize/deserialize http request response
+     * @throws ServletException  may throw while trying to process http request response
+     */
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
 
-        String token = AuthUtils.generateJWT(((User) authResult.getPrincipal()).getUsername(),authenticationSigningSecret);
+        String token = AuthUtils.generateJWT(((User) authResult.getPrincipal()).getUsername(), authenticationSigningSecret);
         response.setHeader("Access-Control-Expose-Headers", "Authorization, x-xsrf-token, Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, " +
                 "Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
         response.addHeader("Authorization", "Bearer " + token);

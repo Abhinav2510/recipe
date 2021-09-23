@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+/**
+ * UserCreateDTO
+ * DTO for User creation and login
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

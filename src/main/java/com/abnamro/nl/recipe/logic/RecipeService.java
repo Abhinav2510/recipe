@@ -23,6 +23,10 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+/**
+ * RecipeService
+ * Contains all the Business logic regarding Recipe entity
+ */
 @Slf4j
 @Component
 @AllArgsConstructor
