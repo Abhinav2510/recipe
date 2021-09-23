@@ -13,6 +13,12 @@ The Recipe API Backend allows performing following operation
 ## Code coverage
 ![Screenshot 2021-09-23 at 09 18 24](https://user-images.githubusercontent.com/14979620/134470003-aee1b61a-8860-43e4-b1bf-8108693e60a3.png)
 
+## Synk vulnerability scan report for dependancy and code
+![Screenshot 2021-09-23 at 13 05 03](https://user-images.githubusercontent.com/14979620/134496791-dbbd217e-90ff-423d-b7dc-06ca10910618.png)
+
+![Screenshot 2021-09-23 at 13 05 17](https://user-images.githubusercontent.com/14979620/134496762-7120c892-f029-43d8-824c-de142fbd38a2.png)
+
+
 ## Assumptions :
 - Validations for recipe creation and update are assumed as 
   - recipeName should be at least 5 characters
