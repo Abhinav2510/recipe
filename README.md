@@ -1,7 +1,11 @@
-# Recipe API Backend
+# :spaghetti:	 Recipe API Backend
+![Java](https://img.shields.io/badge/-Java-000?&logo=Java&logoColor=007396)
+![Docker](https://img.shields.io/badge/-Docker-000?&logo=Docker)
+![Spring](https://img.shields.io/badge/-Spring-000?&logo=Spring)
+
 
 ## Description:
-The Recipe API Backend allows performing following operation
+The Recipe API Backend allows performing following operation. Equipped with state of art  `Spring caching` for faster responses and :closed_lock_with_key:	 `Stateless REST JWT based Bearer token` authentication support with containerization suport with :whale: 	`Dockerfile`.
 - Create Recipe
 - Edit created recipe
 - Delete created recipes
@@ -10,10 +14,16 @@ The Recipe API Backend allows performing following operation
 - Create User 
 - Login with user details
 
-## Code coverage
+## :shield:	 Code coverage
 ![Screenshot 2021-09-23 at 09 18 24](https://user-images.githubusercontent.com/14979620/134470003-aee1b61a-8860-43e4-b1bf-8108693e60a3.png)
 
-## Assumptions :
+## :crossed_fingers:	Synk vulnerability scan report for dependancy and code
+![Screenshot 2021-09-23 at 13 05 03](https://user-images.githubusercontent.com/14979620/134496791-dbbd217e-90ff-423d-b7dc-06ca10910618.png)
+
+![Screenshot 2021-09-23 at 13 05 17](https://user-images.githubusercontent.com/14979620/134496762-7120c892-f029-43d8-824c-de142fbd38a2.png)
+
+
+## :balance_scale:	Assumptions :
 - Validations for recipe creation and update are assumed as 
   - recipeName should be at least 5 characters
   - cuisine, course and instructionText should be at least 3 characters
@@ -23,15 +33,19 @@ The Recipe API Backend allows performing following operation
   - username and password should be at least 8 characters long.
 - Only the user who created recipe can edit,update or delete the recipe
 
-## Tech-Stack
-- Java 8
+## :hammer_and_wrench:	Tech-Stack
+![Java](https://img.shields.io/badge/-Java-000?&logo=Java&logoColor=007396)
+![Docker](https://img.shields.io/badge/-Docker-000?&logo=Docker)
+![Spring](https://img.shields.io/badge/-Spring-000?&logo=Spring)
+
+- Java 8 
 - Spring-Boot
 - JPA
 - In-Memory Database H2
 - Maven
 - Git bash
 
-## Steps to run the application
+## :memo: Steps to run the application
 - Checkout the code / Download from git repo()
 - checkout : open git bash and run command `git clone`
 - Option 1: Maven way of running
@@ -44,7 +58,7 @@ The Recipe API Backend allows performing following operation
 
 Now application is up and running on http://localhost:8080
 
-## How to use this service
+## :grey_question:	How to use this service
 - Open the URL in your browser : http://localhost:8080
 - User will see a swagger page with all the defined specs of the service.
 - There will have 2 Tags you can see.
@@ -76,7 +90,7 @@ Now application is up and running on http://localhost:8080
     - Gets all the recipes with pagination support with default page size 0
     
 
-### Testing using Swagger UI
+### :test_tube: Testing using Swagger UI
 
 ####Running application
 - Run application using `mvn spring-boot: run` or `java -jar /target/recipe-0.0.1-SNAPSHOT.jar`
@@ -102,3 +116,4 @@ Now application is up and running on http://localhost:8080
 
 
 Now you should be able to call all the APIs without needing to specify `authorization` header manually 
+
