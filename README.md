@@ -1,4 +1,7 @@
 # :spaghetti:	 Recipe API Backend
+<a href="https://foojay.io/works-with-openjdk"><img align="right" src="https://github.com/foojayio/badges/raw/main/works_with_openjdk/Works-with-OpenJDK.png" width="100"></a>
+
+
 ![Java](https://img.shields.io/badge/-Java-000?&logo=Java&logoColor=007396)
 ![Docker](https://img.shields.io/badge/-Docker-000?&logo=Docker)
 ![Spring](https://img.shields.io/badge/-Spring-000?&logo=Spring)
